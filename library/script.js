@@ -30,13 +30,27 @@ function addBookToLibrary(title, author, pages, read, library){
 
 function displayBooks(list){
     var booklist = document.getElementById("book-list");
-    
-    list.forEach((book) => {
-        var listItem = document.createElement("li");
-        var bookText = document.createTextNode(book.info());
-        listItem.appendChild(bookText);
-        booklist.appendChild(listItem);
-    });
+    booklist.innerHTML = "";
+    list.forEach((book) => createHTMLBook(book, booklist));
+}
+
+function createHTMLBook(book, list) {
+    var listItem = document.createElement("li");
+
+    const label = document.createElement("label");
+    const checkbox = document.createElement("input");
+    checkbox.type="checkbox";
+    checkbox.id="book-read-checkbox";
+    checkbox.name="book-read-checkbox";
+
+    var bookText = document.createTextNode(book.info());
+
+    label.appendChild(checkbox);
+
+    listItem.appendChild(bookText);
+    listItem.appendChild(label);
+
+    list.appendChild(listItem);
 }
 
 newBook.addEventListener("click", () => {
@@ -55,13 +69,3 @@ submitButton.addEventListener("click", (e) => {
     dialog.close();
 });
 
-
-
-// const book1 = new Book("The Hobbit", "J.R.R. Tolkien", 295, "not read yet");
-// const book2 = new Book("The Hobbit", "J.R.R. Tolkien", 295, "not read yet");
-// const book3 = new Book("The Hobbit", "J.R.R. Tolkien", 295, "not read yet");
-// const book4 = new Book("The Hobbit", "J.R.R. Tolkien", 295, "not read yet");
-// const book5 = new Book("The Hobbit", "J.R.R. Tolkien", 295, "not read yet");
-
-// booklist = [book1, book2, book3, book4, book5];
-// displayBooks(booklist);
