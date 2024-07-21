@@ -1,4 +1,4 @@
-const library = [];
+let library = [];
 
 const bookDialog = document.getElementById("book-dialog");
 const newBook = document.getElementById("new-book");
@@ -15,8 +15,11 @@ function Book(title, author, pages, read=false){
     }
 }
 
-function addBookToLibrary(book, library){
-    library.append(book);
+function addBookToLibrary(title, author, pages, library){
+    const book = new Book(title, author, pages);
+    library.push(book);
+    console.log(library);
+    displayBooks(library);
 }
 
 function displayBooks(list){
@@ -27,7 +30,7 @@ function displayBooks(list){
         var bookText = document.createTextNode(book.info());
         listItem.appendChild(bookText);
         booklist.appendChild(listItem);
-    })
+    });
 }
 
 newBook.addEventListener("click", () => {
@@ -36,24 +39,23 @@ newBook.addEventListener("click", () => {
 
 submitButton.addEventListener("click", (e) => {
     e.preventDefault();
-    const title = document.getElementById("book-title");
-    const author = document.getElementById("book-author");
-    const pages = document.getElementById("book-pages");
+    const title = document.getElementById("book-title").value;
+    const author = document.getElementById("book-author").value;
+    const pages = +document.getElementById("book-pages").value;
 
-    book = new Book(title, author, pages);
-
-    addBookToLibrary(library, book);
-    console.log(book);
+    
+    addBookToLibrary(title, author, pages, library);
+    
     dialog.close();
 });
 
 
 
-const book1 = new Book("The Hobbit", "J.R.R. Tolkien", 295, "not read yet");
-const book2 = new Book("The Hobbit", "J.R.R. Tolkien", 295, "not read yet");
-const book3 = new Book("The Hobbit", "J.R.R. Tolkien", 295, "not read yet");
-const book4 = new Book("The Hobbit", "J.R.R. Tolkien", 295, "not read yet");
-const book5 = new Book("The Hobbit", "J.R.R. Tolkien", 295, "not read yet");
+// const book1 = new Book("The Hobbit", "J.R.R. Tolkien", 295, "not read yet");
+// const book2 = new Book("The Hobbit", "J.R.R. Tolkien", 295, "not read yet");
+// const book3 = new Book("The Hobbit", "J.R.R. Tolkien", 295, "not read yet");
+// const book4 = new Book("The Hobbit", "J.R.R. Tolkien", 295, "not read yet");
+// const book5 = new Book("The Hobbit", "J.R.R. Tolkien", 295, "not read yet");
 
-booklist = [book1, book2, book3, book4, book5];
-displayBooks(booklist);
+// booklist = [book1, book2, book3, book4, book5];
+// displayBooks(booklist);
