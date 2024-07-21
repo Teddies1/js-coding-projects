@@ -38,22 +38,21 @@ function displayBooks(list){
 }
 
 function createHTMLBook(book, list) {
-    var listItem = document.createElement("li");
     var checkbox = document.createElement("input");
-    var remBtn = document.createElement('button');
-    var label = document.createElement("label");
-    var bookText = document.createTextNode(book.info());
-    // listItem.classList.add('book');
-    // listItem.classList.add(`${library.bookId}`);
-    
     checkbox.type="checkbox";
     checkbox.id="book-read-checkbox";
     checkbox.name="book-read-checkbox";
-    checkbox.addEventListener("click", (e) => toggleRead(e, book))
+    checkbox.addEventListener("click", (e) => toggleRead(e, book));
+    
+    var remBtn = document.createElement('button');
     remBtn.textContent = 'Remove';
     remBtn.addEventListener("click", (e) => removeBook(e, book));
     
+    var label = document.createElement("label");
     label.appendChild(checkbox);
+    
+    var listItem = document.createElement("li");
+    var bookText = document.createTextNode(book.info());
 
     listItem.appendChild(bookText);
     listItem.appendChild(label);
