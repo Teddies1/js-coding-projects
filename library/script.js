@@ -5,13 +5,15 @@ const newBook = document.getElementById("new-book");
 const confirmBtn = bookDialog.querySelector("#confirmBtn");
 const submitButton = document.getElementById("submit-button");
 
+
 function Book(title, author, pages, read=false){
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
-    this.info = (read) => {
-        if (read === false){
+    this.bookId = `book${++Book.id}`;
+    this.info = () => {
+        if (this.read === false){
             var bookRead = "not read.";
         }
         else{
@@ -21,10 +23,11 @@ function Book(title, author, pages, read=false){
     }
 }
 
+Book.id = 0;
+
 function addBookToLibrary(title, author, pages, read, library){
     const book = new Book(title, author, pages, read);
     library.push(book);
-    console.log(library);
     displayBooks(library);
 }
 
@@ -36,6 +39,8 @@ function displayBooks(list){
 
 function createHTMLBook(book, list) {
     var listItem = document.createElement("li");
+    listItem.classList.add('book');
+    listItem.classList.add(`${library.bookId}`);
 
     const label = document.createElement("label");
     const checkbox = document.createElement("input");
@@ -50,7 +55,13 @@ function createHTMLBook(book, list) {
     listItem.appendChild(bookText);
     listItem.appendChild(label);
 
+    const remBtn = document.createElement('button');
+    listItem.appendChild(remBtn);
+    remBtn.textContent = 'Remove';
+    // remBtn.onclick = removeBook();
+
     list.appendChild(listItem);
+    
 }
 
 newBook.addEventListener("click", () => {
@@ -65,7 +76,8 @@ submitButton.addEventListener("click", (e) => {
     const read = document.getElementById("book-read").checked;
     
     addBookToLibrary(title, author, pages, read, library);
-    
-    dialog.close();
+
+    document.getElementById("submission-form").reset();
+    bookDialog.close();
 });
 
