@@ -3,15 +3,21 @@ let library = [];
 const bookDialog = document.getElementById("book-dialog");
 const newBook = document.getElementById("new-book");
 const confirmBtn = bookDialog.querySelector("#confirmBtn");
-const submitButton = document.getElementById("submit-button")
+const submitButton = document.getElementById("submit-button");
 
 function Book(title, author, pages, read=false){
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
-    this.info = () => {
-        return (this.title + " by " + this.author + ", " + this.pages + " pages, " + this.read)
+    this.info = (read) => {
+        if (read === false){
+            var bookRead = "not read.";
+        }
+        else{
+            var bookRead = "already read.";
+        }
+        return (this.title + " by " + this.author + ", " + this.pages + " pages, " + bookRead);
     }
 }
 
