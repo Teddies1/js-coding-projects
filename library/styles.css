@@ -4,3 +4,14 @@
     justify-content: center;
     align-items: center;
 }
+
+#book-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+li {
+    text-decoration: none;
+}
