@@ -15,8 +15,8 @@ function Book(title, author, pages, read=false){
     }
 }
 
-function addBookToLibrary(title, author, pages, library){
-    const book = new Book(title, author, pages);
+function addBookToLibrary(title, author, pages, read, library){
+    const book = new Book(title, author, pages, read);
     library.push(book);
     console.log(library);
     displayBooks(library);
@@ -42,9 +42,9 @@ submitButton.addEventListener("click", (e) => {
     const title = document.getElementById("book-title").value;
     const author = document.getElementById("book-author").value;
     const pages = +document.getElementById("book-pages").value;
-
+    const read = document.getElementById("book-read").checked;
     
-    addBookToLibrary(title, author, pages, library);
+    addBookToLibrary(title, author, pages, read, library);
     
     dialog.close();
 });
