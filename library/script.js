@@ -49,7 +49,7 @@ function createHTMLBook(book, list) {
     checkbox.type="checkbox";
     checkbox.id="book-read-checkbox";
     checkbox.name="book-read-checkbox";
-
+    checkbox.addEventListener("click", (e) => toggleRead(e, book))
     remBtn.textContent = 'Remove';
     remBtn.addEventListener("click", (e) => removeBook(e, book));
     
@@ -64,6 +64,11 @@ function createHTMLBook(book, list) {
 
 function removeBook(e, book){
     library.splice(library.indexOf(book), 1);
+    displayBooks(library);
+}
+
+function toggleRead(e, book){
+    library[library.indexOf(book)]["read"] = !library[library.indexOf(book)]["read"]
     displayBooks(library);
 }
 
