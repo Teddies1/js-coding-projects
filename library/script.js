@@ -1,10 +1,9 @@
-let library = [];
+const library = [];
 
 const bookDialog = document.getElementById("book-dialog");
 const newBook = document.getElementById("new-book");
 const confirmBtn = bookDialog.querySelector("#confirmBtn");
 const submitButton = document.getElementById("submit-button");
-
 
 function Book(title, author, pages, read=false){
     this.title = title;
@@ -35,33 +34,37 @@ function displayBooks(list){
     var booklist = document.getElementById("book-list");
     booklist.innerHTML = "";
     list.forEach((book) => createHTMLBook(book, booklist));
+    console.log(list);
 }
 
 function createHTMLBook(book, list) {
     var listItem = document.createElement("li");
-    listItem.classList.add('book');
-    listItem.classList.add(`${library.bookId}`);
-
-    const label = document.createElement("label");
-    const checkbox = document.createElement("input");
+    var checkbox = document.createElement("input");
+    var remBtn = document.createElement('button');
+    var label = document.createElement("label");
+    var bookText = document.createTextNode(book.info());
+    // listItem.classList.add('book');
+    // listItem.classList.add(`${library.bookId}`);
+    
     checkbox.type="checkbox";
     checkbox.id="book-read-checkbox";
     checkbox.name="book-read-checkbox";
 
-    var bookText = document.createTextNode(book.info());
-
+    remBtn.textContent = 'Remove';
+    remBtn.addEventListener("click", (e) => removeBook(e, book));
+    
     label.appendChild(checkbox);
 
     listItem.appendChild(bookText);
     listItem.appendChild(label);
-
-    const remBtn = document.createElement('button');
     listItem.appendChild(remBtn);
-    remBtn.textContent = 'Remove';
-    // remBtn.onclick = removeBook();
 
     list.appendChild(listItem);
-    
+}
+
+function removeBook(e, book){
+    library.splice(library.indexOf(book), 1);
+    displayBooks(library);
 }
 
 newBook.addEventListener("click", () => {
