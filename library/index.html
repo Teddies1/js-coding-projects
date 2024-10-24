@@ -1,25 +1,25 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
-  <script defer src="script.js"></script>
-  <title>Library App</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="script.js"></script>
+    <title>Library App</title>
+  </head>
+  <body>
     <h1>Welcome to the Library App</h1>
     <dialog class="book-dialog" id="book-dialog">
       <form id="submission-form">
         <p>
-          <label for="book-title">Title:</label><br>
-          <input type="text" id="book-title" name="book-title"><br>
-          <label for="book-author">Author:</label><br>
-          <input type="text" id="book-author" name="book-author"><br>
-          <label for="book-pages">Pages:</label><br>
-          <input type="text" id="book-pages" name="book-pages"><br>
-          <label for="book-read">Read:</label><br>
-          <input type="checkbox" id="book-read" name="book-read">
+          <label for="book-title">Title:</label><br />
+          <input type="text" id="book-title" name="book-title" /><br />
+          <label for="book-author">Author:</label><br />
+          <input type="text" id="book-author" name="book-author" /><br />
+          <label for="book-pages">Pages:</label><br />
+          <input type="text" id="book-pages" name="book-pages" /><br />
+          <label for="book-read">Read:</label><br />
+          <input type="checkbox" id="book-read" name="book-read" />
         </p>
         <div>
           <button value="cancel" formmethod="dialog">Cancel</button>
@@ -31,10 +31,8 @@
       <button class="new-book" id="new-book">New Book</button>
     </p>
     <output></output>
-    <div >
-        <ul id="book-list">
-            
-        </ul>
+    <div>
+      <ul id="book-list"></ul>
     </div>
-</body>
+  </body>
 </html>

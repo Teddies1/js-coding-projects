@@ -1,23 +1,23 @@
-.library-container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.library-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 #book-list {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 li {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .new-book {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
